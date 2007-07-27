@@ -8,7 +8,6 @@
   <property name="zip"  location="zip"/>
 
   <property name="sql" location="sql"/>
-  <property name="libs" location="libs"/>
 
   <path id="svnant.classpath">
     <fileset dir="svnant">
@@ -36,15 +35,11 @@
   </target>
 
   <target name="dist" depends="compile,svnant" description="generate the distribution" >
-    <mkdir dir="${dist}/libs"/>
     <mkdir dir="${dist}/sql"/>
     <copyfile src="LICENSE" dest="${dist}/LICENSE"/>
     <copyfile src="josser.properties" dest="${dist}/josser.properties"/>
     <copyfile src="LICENSE" dest="${build}/LICENSE"/>
     <jar jarfile="${dist}/josser.jar" basedir="${build}"/>
-    <copy todir="${dist}/libs">
-        <fileset dir="libs"/>
-    </copy>
     <copy todir="${dist}/sql">
         <fileset dir="sql"/>
     </copy>
